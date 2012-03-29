@@ -25,7 +25,7 @@
 // STL
 #include <iostream>
 
-namespace HelpersQt
+namespace QtHelpers
 {
 
 bool GetColumnIdByHeader(const QTableWidget* table, const std::string& header, int& columnId)

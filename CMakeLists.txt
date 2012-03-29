@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 2.8)
 
-add_library(libQtHelpers QtHelpers.cpp)
+message("Building QtHelpers")
 
 include_directories(${CMAKE_CURRENT_SOURCE_DIR})
 
@@ -15,6 +15,8 @@ list(APPEND compileflags "USE_QT_PARALLEL")
 # ITK
 FIND_PACKAGE(ITK REQUIRED)
 INCLUDE(${ITK_USE_FILE})
+
+add_library(libQtHelpers QtHelpers.cpp)
 
 if(BuildTests)
   add_subdirectory(Tests)

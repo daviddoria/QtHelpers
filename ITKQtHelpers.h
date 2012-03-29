@@ -16,8 +16,8 @@
  *
  *=========================================================================*/
 
-#ifndef HELPERS_QT_H
-#define HELPERS_QT_H
+#ifndef ITKQtHelpers_H
+#define ITKQtHelpers_H
 
 // Qt
 #include <QColor>
@@ -30,19 +30,19 @@ class QTableWidget;
 #include "itkImageRegion.h"
 
 // Custom
-#include "DisplayStyle.h"
-#include "ImageProcessing/Mask.h"
+//#include "DisplayStyle.h"
+#include "Mask/Mask.h"
 
 Q_DECLARE_METATYPE(itk::ImageRegion<2>)
 
-namespace HelpersQt
+namespace ITKQtHelpers
 {
 
 ////////////////////////////////////
 ///////// Function templates ///////
 ////////////////////////////////////
-template <typename TImage>
-QImage GetQImage(const TImage* const image, const itk::ImageRegion<2>& region, const DisplayStyle& style);
+// template <typename TImage>
+// QImage GetQImage(const TImage* const image, const itk::ImageRegion<2>& region, const DisplayStyle& style);
 
 template <typename TImage>
 QImage GetQImageColor(const TImage* const image, const itk::ImageRegion<2>& region);
@@ -56,13 +56,8 @@ QImage GetQImageScalar(const TImage* const image, const itk::ImageRegion<2>& reg
 template <typename TImage>
 QImage GetQImageChannel(const TImage* const image, const itk::ImageRegion<2>& region, const unsigned int channel);
 
-/** Construct a QImage from a source and target patch.*/
-template <typename TImage>
-QImage GetQImageCombinedPatch(const TImage* const image, const itk::ImageRegion<2>& sourceRegion, const itk::ImageRegion<2>& targetRegion, const Mask* const mask);
-
-
 } // end namespace
 
-#include "QtHelpers.hpp"
+#include "ITKQtHelpers.hpp"
 
 #endif

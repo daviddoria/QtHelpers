@@ -16,11 +16,16 @@
  *
  *=========================================================================*/
 
+#ifndef QtHelpers_HPP
+#define QtHelpers_HPP
+
 // Qt
 #include <QColor>
 
-namespace HelpersQt
+namespace QtHelpers
 {
 
 
 } // end namespace
+
+#endif
