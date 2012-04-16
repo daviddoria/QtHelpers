@@ -80,4 +80,6 @@ void HighlightCenterPixel(QImage& qimage, const QColor& color)
   qimage.setPixel(qimage.size().width()/2, qimage.size().height()/2, color.rgb());
 }
 
+
+
 } // end namespace

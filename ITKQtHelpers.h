@@ -38,11 +38,18 @@ Q_DECLARE_METATYPE(itk::ImageRegion<2>)
 namespace ITKQtHelpers
 {
 
+QImage GetQMaskImage(const Mask* const mask);
+
+QImage GetQMaskImage(const Mask* const mask, const itk::ImageRegion<2>& region);
+
 ////////////////////////////////////
 ///////// Function templates ///////
 ////////////////////////////////////
 // template <typename TImage>
 // QImage GetQImage(const TImage* const image, const itk::ImageRegion<2>& region, const DisplayStyle& style);
+
+template <typename TImage>
+QImage GetQImageColor(const TImage* const image);
 
 template <typename TImage>
 QImage GetQImageColor(const TImage* const image, const itk::ImageRegion<2>& region);
@@ -55,6 +62,12 @@ QImage GetQImageScalar(const TImage* const image, const itk::ImageRegion<2>& reg
 
 template <typename TImage>
 QImage GetQImageChannel(const TImage* const image, const itk::ImageRegion<2>& region, const unsigned int channel);
+
+template <typename TImage>
+QImage GetQImageRGBA(const TImage* const image);
+
+template <typename TImage>
+QImage GetQImageRGBA(const TImage* const image, const itk::ImageRegion<2>& region);
 
 } // end namespace
 

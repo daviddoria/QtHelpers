@@ -62,6 +62,13 @@ namespace ITKQtHelpers
 //   return QImage();
 // }
 
+
+template <typename TImage>
+QImage GetQImageColor(const TImage* const image)
+{
+  return GetQImageColor(image, image->GetLargestPossibleRegion());
+}
+
 template <typename TImage>
 QImage GetQImageColor(const TImage* const image, const itk::ImageRegion<2>& region)
 {
@@ -193,6 +200,46 @@ QImage GetQImageScalar(const TImage* image, const itk::ImageRegion<2>& region)
 }
 
 
+template <typename TImage>
+QImage GetQImageRGBA(const TImage* const image)
+{
+  return GetQImageRGBA<TImage>(image, image->GetLargestPossibleRegion());
+}
+
+template <typename TImage>
+QImage GetQImageRGBA(const TImage* const image, const itk::ImageRegion<2>& region)
+{
+  QImage qimage(region.GetSize()[0], region.GetSize()[1], QImage::Format_ARGB32);
+
+  typedef itk::RegionOfInterestImageFilter< TImage, TImage > RegionOfInterestImageFilterType;
+  typename RegionOfInterestImageFilterType::Pointer regionOfInterestImageFilter = RegionOfInterestImageFilterType::New();
+  regionOfInterestImageFilter->SetRegionOfInterest(region);
+  regionOfInterestImageFilter->SetInput(image);
+  regionOfInterestImageFilter->Update();
+
+  itk::ImageRegionIterator<TImage> imageIterator(regionOfInterestImageFilter->GetOutput(), regionOfInterestImageFilter->GetOutput()->GetLargestPossibleRegion());
+
+  while(!imageIterator.IsAtEnd())
+    {
+    typename TImage::PixelType pixel = imageIterator.Get();
+
+    itk::Index<2> index = imageIterator.GetIndex();
+    int r = static_cast<int>(pixel[0]);
+    int g = static_cast<int>(pixel[1]);
+    int b = static_cast<int>(pixel[2]);
+    QColor pixelColor(r,g,b,255); // opaque
+    if(r > 255 || r < 0 || g > 255 || g < 0 || b > 255 || b < 0)
+      {
+      std::cout << "Can't set r,g,b to " << r << " " << g << " " << b << std::endl;
+      }
+    qimage.setPixel(index[0], index[1], pixelColor.rgba());
+
+    ++imageIterator;
+    }
+
+  //return qimage; // The actual image region
+  return qimage.mirrored(false, true); // The flipped image region
+}
 
 } // end namespace
 
