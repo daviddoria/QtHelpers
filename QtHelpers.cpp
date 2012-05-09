@@ -25,7 +25,7 @@
 // STL
 #include <iostream>
 
-namespace HelpersQt
+namespace QtHelpers
 {
 
 bool GetColumnIdByHeader(const QTableWidget* table, const std::string& header, int& columnId)
@@ -79,5 +79,7 @@ void HighlightCenterPixel(QImage& qimage, const QColor& color)
 {
   qimage.setPixel(qimage.size().width()/2, qimage.size().height()/2, color.rgb());
 }
+
+
 
 } // end namespace

@@ -16,8 +16,8 @@
  *
  *=========================================================================*/
 
-#ifndef HELPERS_QT_H
-#define HELPERS_QT_H
+#ifndef QtHelpers_H
+#define QtHelpers_H
 
 // Qt
 #include <QColor>
@@ -26,7 +26,7 @@
 class QGraphicsView;
 class QTableWidget;
 
-namespace HelpersQt
+namespace QtHelpers
 {
 /** Convert a QColor to an unsigned char[3] */
 void QColorToUCharColor(const QColor& color, unsigned char outputColor[3]);
@@ -44,5 +44,7 @@ void HighlightCenterPixel(QImage& qimage, const QColor& color);
 void SetImageToConstant(QImage& qimage, const QColor& color);
 
 } // end namespace
+
+#include "QtHelpers.hpp"
 
 #endif
