@@ -10,8 +10,8 @@ FIND_PACKAGE(Qt4 REQUIRED)
 INCLUDE(${QT_USE_FILE})
 list(APPEND compileflags "USE_QT_PARALLEL")
 
-add_library(libQtHelpers QtHelpers.cpp)
-target_link_libraries(libQtHelpers ${QT_LIBRARIES})
+add_library(QtHelpers QtHelpers.cpp)
+target_link_libraries(QtHelpers ${QT_LIBRARIES})
 
 if(BuildTests)
   add_subdirectory(Tests)
