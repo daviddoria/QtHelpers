@@ -13,7 +13,7 @@ list(APPEND compileflags "USE_QT_PARALLEL")
 add_library(QtHelpers QtHelpers.cpp)
 target_link_libraries(QtHelpers ${QT_LIBRARIES})
 
-if(BuildTests)
+SET(QtHelpers_BuildTests OFF CACHE BOOL "QtHelpers_BuildTests")
+if(QtHelpers_BuildTests)
   add_subdirectory(Tests)
-endif(BuildTests)
-
+endif()
