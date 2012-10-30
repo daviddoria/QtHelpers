@@ -8,7 +8,11 @@ endif(UNIX)
 
 FIND_PACKAGE(Qt4 REQUIRED)
 INCLUDE(${QT_USE_FILE})
+set(QtHelpers_libraries ${QtHelpers_libraries} ${QtLIBRARIES})
 list(APPEND compileflags "USE_QT_PARALLEL")
+
+# Give the compiler all of the required include directories
+include_directories(${QtHelpers_include_dirs})
 
 add_library(QtHelpers QtHelpers.cpp)
 target_link_libraries(QtHelpers ${QT_LIBRARIES})
