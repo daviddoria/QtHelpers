@@ -4,4 +4,4 @@
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/..)
 
 add_executable(Tests Tests.cpp)
-target_link_libraries(Tests libQtHelpers)
+target_link_libraries(Tests QtHelpers)
